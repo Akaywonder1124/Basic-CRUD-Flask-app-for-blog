@@ -3,8 +3,9 @@
 <ul>
   <li>Description</li>
   <li>Overview</li>
-  <li></li>
-  <li></li>
+  <li>User Authentication</li>
+  <li>Features</li>
+  <li>Conclusion</li>
 </ul>
 <h2>Description</h2>
 <p>
