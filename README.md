@@ -8,9 +8,9 @@
 </ul>
 <h2>Description</h2>
 <p>
-CRUD Meaning: CRUD is an acronym that comes from the world of computer programming and refers to the four functions that are considered necessary to implement a persistent storage application: create, read, update and delete.
-  
-  In This App, a user will be able to Create a post, Modify the post, Read and also Delete it
+CRUD Meaning: CRUD is an acronym that comes from the world of computer programming and refers
+ to the four functions that are considered necessary to implement a persistent storage application: create, read, update and delete. 
+ In This App, a user will be able to Create a post, Modify the post, Read and also Delete it This gives users full control over their blog post
 </p>
 
 <h3>The Video below shows an overview of what an anonymous user will be able to see</h3>
