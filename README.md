@@ -5,7 +5,7 @@
   <li>Overview</li>
   <li>User Authentication</li>
   <li>Features</li>
-  <li>Conclusion</li>
+ 
 </ul>
 <h2>Description</h2>
 <p>
@@ -85,6 +85,10 @@ https://user-images.githubusercontent.com/97950441/181084681-fde09f9f-a703-4933-
    <img width="947" alt="create post" src="https://user-images.githubusercontent.com/97950441/181105800-9f275310-1384-4d1a-a6ac-f677bbf79d10.png">
 
   
-   <h3>The video below shows what an authenticated user will be able to do</h3>
-https://user-images.githubusercontent.com/97950441/181105289-7b8ef65e-16c6-43c7-ad4a-8669da79c717.mp4
+   <h3>The video below shows the update and delete feature for authenticated user</h3>
+   <h4> The logic behind this feature also checks and make sure only post authors can make changes to their post</h4>
 
+   https://user-images.githubusercontent.com/97950441/181105289-7b8ef65e-16c6-43c7-ad4a-8669da79c717.mp4
+
+
+   
