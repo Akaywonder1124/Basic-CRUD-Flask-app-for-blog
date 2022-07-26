@@ -21,13 +21,32 @@ https://user-images.githubusercontent.com/97950441/181084681-fde09f9f-a703-4933-
 
 <h2>User Authentication</h2>
 <p>User authentication verifies the identity of a user attempting to gain access to  the CRUD system by authorizing a human-to-machine transfer of credentials in order to confirm a user's authenticity.</p>
-<h3>Resources Used For User Authentication<h3>
+<h3>Extensions Used For User Authentication<h3>
   <ul>
-  <li></li>
-  <li>Overview</li>
-  <li>User Authentication</li>
-  <li>Features</li>
-  <li>Conclusion</li>
+  <li>Flask-wtform</li>
+  <p>
+  WTForms are really useful it does a lot of heavy lifting when it comes to data validation on top of the CSRF protection .
+  Another useful thing is the use combined with Jinja2 where there is need to write less code to render the form
+  </p>
+  <li>Flask-Login</li>
+    <p>
+  Flask-Login provides user session management for Flask. It handles the common tasks of logging in, logging out, 
+  and remembering your users' sessions over extended periods of time. 
+  It will: Store the active user's ID in the session, and let you log them in and out easily.
+  </p>
+  <li>Flask Sqlalchemy</li>
+    <p>
+    I chose Sqlalchemy as my ORM(Object relational Mapper)
+    SQLAlchemy is great because it provides a good connection / pooling infrastructure; a good Pythonic query
+    building infrastructure; and then a good ORM infrastructure that is capable of complex queries and 
+    mappings (as well as some pretty stone-simple ones).
+  </p>
+  <li>Bcrypt</li>
+    <p>
+  BCrypt is based on the Blowfish block cipher cryptomatic algorithm and takes the form of an adaptive hash function
+  Using a Key Factor, BCrypt is able to adjust the cost of hashing. With Key Factor changes, the hash output can be influenced. 
+  In this way, BCrypt remains extremely resistant to hacks, especially a type of password cracking called rainbow table.
+  </p>
 </ul>
 
 <h3>Registration</h3>
