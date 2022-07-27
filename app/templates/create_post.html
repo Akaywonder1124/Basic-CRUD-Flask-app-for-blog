@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+{% from "macro.html" import render_field %}
+<div class="content-section">
+<form class="form-group" action="" method="post" enctype="multipart/form-data">
+    {{form.hidden_tag()}}
+    <fieldset class="form-group">
+        <legend class="border-bottom mb-4">{{legend}}</legend>
+        <div class="form-group mt-2">
+            {{form.title.label(class="form-control-label")}}
+            {{render_field(form.title)}}
+        </div>
+        <div class="form-group mt-2">
+            {{form.content.label(class="form-control-label")}}
+            {{render_field(form.content)}}
+
+        </div>
+        <div class="form-group mt-2">
+            {{form.categories.label(class="form-control-label")}}
+            {{render_field(form.categories)}}
+
+        </div>
+        <div class="form-group mt-4">
+            {{form.post_img.label}}<br>
+            {{render_field(form.post_img, class="form-control-file", required=required)}}
+
+        </div>
+    </fieldset>
+    <div class="form-group mt-4">
+        {{form.submit(class="btn btn-outline-info btn-info", style="color:#fff;")}}
+    </div>
+</div>
+    {% endblock %}

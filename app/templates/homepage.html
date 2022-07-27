@@ -1,0 +1,170 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!--Container-->
+<div class="container">
+    <div class="row mb-2">
+        <div class="col-12 text-center pt-3">
+            <h1 class="aofa">TELL THEM AOFA</h1>
+            <p>THEY WAN HEAR THE GIST, <a href="/register" class="tagline">TELL THEM</a></p>
+        </div>
+    </div>
+
+    <!--Start code-->
+    <div class="row">
+        <div class="col-12 pb-5">
+            <!--SECTION START-->
+            <section class="row">
+
+                <!--Start slider news-->
+                <div class="col-12 col-md-6 pb-0 pb-md-3 pt-2 pr-md-1">
+                    <div id="featured" class="carousel slide carousel" data-bs-ride="carousel">
+                        <!--dots navigate-->
+                        <ol class="carousel-indicators top-indicator">
+                            <li data-bs-target="#featured" data-bs-slide-to="0" class="active"></li>
+                            <li data-bs-target="#featured" data-bs-slide-to="1"></li>
+                            <li data-bs-target="#featured" data-bs-slide-to="2"></li>
+                            <li data-bs-target="#featured" data-bs-slide-to="3"></li>
+                        </ol>
+
+                        <!--carousel inner-->
+                        <div class="carousel-inner">
+                            {% for post in carousel_post.items %}
+                            <!--Item slider-->
+                            <div class="carousel-item active">
+                                <div class="card border-0 rounded-0 text-light overflow zoom">
+                                    <div class="position-relative">
+                                        <!--thumbnail img-->
+                                        <div class="ratio_left-cover-1 image-wrapper">
+                                            <a href="{{url_for('posts.blog', post_id=post.id)}}">
+                                                <img class="img-fluid w-100 carousel_featured_image"
+                                                    src="{{url_for('static', filename='post_img' + post.featured_image)}}"
+                                                    alt="featured_image">
+                                            </a>
+                                        </div>
+                                        <div class="position-absolute p-2 p-lg-3 b-0 w-100 bg-shadow">
+                                            <!--title-->
+                                            <a href="{{url_for('posts.blog', post_id=post.id)}}">
+                                                <h2 class="h3 post-title text-white my-1">{{post.title |truncate(50,
+                                                    True, '...') }}</h2>
+                                            </a>
+                                            <!-- meta title -->
+                                            <div class="news-meta">
+                                                <span class="news-author">by <a class="text-white font-weight-bold"
+                                                        href="{{url_for('posts.user_post', username=post.author.username)}}">{{post.author.username}}</a></span>
+                                                <span class="news-date">{{post.date_posted.strftime('%Y-%m-%d')}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+
+                            <!--end item slider-->
+                        </div>
+                        <!--end carousel inner-->
+                    </div>
+
+                    <!--navigation-->
+                    <a class="carousel-control-prev" href="#featured" role="button" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only text-light"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#featured" role="button" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only text-light"></span>
+                    </a>
+                </div>
+                <!--End slider news-->
+
+                <!--Start box news-->
+                <div class="col-12 col-md-6 pt-2 pl-md-1 mb-3 mb-lg-4">
+                    <div class="row">
+                        <!--news box-->
+                        {% for post in header_post %}
+                        <div class="col-6 pb-1 pt-0 pr-1">
+                            <div class="card border-0 rounded-0 text-white overflow zoom">
+                                <div class="position-relative">
+                                    <!--thumbnail img-->
+                                    <div class="ratio_right-cover-2 image-wrapper">
+                                        <a href="#">
+                                            <img class="img-fluid header_image"
+                                                src="{{url_for('static', filename='post_img' + post.featured_image)}}"
+                                                alt="">
+                                        </a>
+                                    </div>
+                                    <div class="position-absolute p-2 p-lg-3 b-0 w-100 bg-shadow">
+                                        <!-- category -->
+                                        <a class="p-1 badge badge-primary rounded-0"
+                                            href="{{url_for('posts.categories_post', categories=post.scategories)}}">{{post.categories}}</a>
+
+                                        <!--title-->
+                                        <a href="{{url_for('posts.blog', post_id=post.id)}}">
+                                            <h2 class="h5 text-white my-1">{{post.title |truncate(50, True, '...') }}
+                                            </h2>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        <!--end news box-->
+                    </div>
+                </div>
+                <!--End box news-->
+            </section>
+            <!--END SECTION-->
+        </div>
+    </div>
+    <!--end code-->
+</div>
+
+
+<article class="media content-section">
+    <div class="media-body">
+        <div class="container">
+            <div class="row">
+                {% for post in post.items %}
+                <div class="col-md-6 post-container">
+                    <div class="article-metadata">
+                        <div class="container">
+                            <a href="{{url_for('posts.user_post', username=post.author.username)}}"><img
+                                    class="rounded-circle article-img"
+                                    src="{{url_for('static', filename='profile_pics' + post.author.image_file)}}"></a>
+                        </div>
+                        <a class="mr-2" href="{{url_for('posts.user_post', username=post.author.username)}}">{{
+                            post.author.username }}</a>
+                        <span class="text-primary"><a
+                                href="{{url_for('posts.categories_post', categories=post.categories)}}">Category : {{
+                                post.categories}}</a></span>
+                        <small class="text-primary">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+                        <p>
+                        <h3>
+                            <a class="article-title" href="{{url_for('posts.blog', post_id=post.id)}}">{{ post.title
+                                }}</a>
+                        </h3>
+                        <img class="post_img" src="{{url_for('static', filename='post_img' + post.featured_image)}}">
+                        <p class="article-content">{{ post.content |truncate(250, True, '...') }}<a
+                                href="{{url_for('posts.blog', post_id=post.id)}}">Read More</a></p>
+                        </p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</article>
+<div style="float:right;">
+    {% for page_number in post.iter_pages(left_edge =2, right_edge =2, left_current = 2, right_current =2) %}
+    {% if page_number %}
+    {% if post.page == page_number %}
+    <a class="btn btn-primary" href="{{url_for('main.index', page=page_number)}}">{{page_number}}</a>
+    {% else %}
+    <a class="btn btn-outline-primary" href="{{url_for('main.index', page=page_number)}}">{{page_number}}</a>
+    {% endif %}
+    {% else %}
+    ...
+    {% endif %}
+    {% endfor %}
+</div>
+{% endblock content %}

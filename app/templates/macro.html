@@ -1,0 +1,13 @@
+{% macro render_field(field)%}
+{{field(class_="form-control form-control-lg", **kwargs)|safe}}
+{%if field.errors %}
+{%for error in field.errors %}
+<pre style="color:red;">
+{{error}}
+</pre>
+{% endfor %}
+{%endif%}
+{%endmacro%}
+{% macro checkbox(field)%}
+{{field(class_="form-check-input", **kwargs)|safe}}
+{% endmacro %}

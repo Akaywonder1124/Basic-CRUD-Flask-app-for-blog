@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="mb-3">Category: {{categories}} ({{post.total}})</h1>
+<article class="media content-section">
+  <div class="media-body">
+    <div class="container">
+      <div class="row">
+        {% for post in post.items %}
+        <div class="col-md-6 post-container">
+          <div class="article-metadata">
+            <div class="container">
+              <a href="{{url_for('posts.user_post', username=post.author.username)}}"><img class="rounded-circle article-img" 
+                src="{{url_for('static', filename='profile_pics' + post.author.image_file)}}"></a>
+            </div>
+            <a class="mr-2" href="{{url_for('posts.user_post', username=post.author.username)}}">{{ post.author.username }}</a>
+            <small class="text-primary">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+            <p>
+            <h2>
+              <a class="article-title" href="{{url_for('posts.blog', post_id=post.id)}}">{{ post.title }}</a>
+            </h2>
+            <img class="post_img" src="{{url_for('static', filename='post_img' + post.featured_image)}}">
+            <p class="article-content">{{ post.content |truncate(250, True, '...') }}<a
+                href="{{url_for('posts.blog', post_id=post.id)}}">Read More</a></p>
+            </p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</article>
+<div style="float:right;">
+{% for page_number in post.iter_pages(left_edge =2, right_edge =2, left_current = 2, right_current =2) %}
+{% if page_number %}
+    {% if post.page == page_number %}
+    <a class="btn btn-primary" href="{{url_for('posts.categories_post', categories=categories, page=page_number)}}">{{page_number}}</a>
+    {% else %}
+    <a class="btn btn-outline-primary" href="{{url_for('posts.categories_post', categories=categories, page=page_number)}}">{{page_number}}</a>
+    {% endif %}
+ {% else %}
+ ...
+{% endif %}
+{% endfor %}
+</div>
+{% endblock content %}
